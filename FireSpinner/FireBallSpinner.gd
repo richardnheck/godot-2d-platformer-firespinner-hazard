@@ -513,7 +513,7 @@ func calculate_adjustments_caused_by_swing_ease_time_offset() -> void:
 	
 	var i = 0
 	# Loop through the number of degrees to determine the starting offset of the swing cycle as well as the starting direction of rotation
-	while degrees_left > 0 or i > 5:  # i check is to prevent infinite loop just in case
+	while degrees_left > 0:  
 		var exceeded_boundary_anticlockwise = offset_sign == -1 and offset_degrees - degrees_left < -swing_degrees
 		var exceeded_boundary_clockwise = offset_sign == 1 and (offset_degrees + degrees_left > swing_degrees)
 		
@@ -529,6 +529,11 @@ func calculate_adjustments_caused_by_swing_ease_time_offset() -> void:
 			degrees_left = 0
 			
 		i += 1
+		print("degrees_left", degrees_left)
+		# Safe check to prevent infinite loops
+		if i > 100:
+			break
+			print("i > 100")
 		
 	swing_time_offset_degrees = offset_degrees
 	

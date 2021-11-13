@@ -11,8 +11,8 @@ onready var swing_speed_value_label = $CanvasLayer/GUI/VBoxContainer/SwingSpeed/
 onready var swing_time_offset_value_label = $CanvasLayer/GUI/VBoxContainer/SwingTimeOffset/ValueLabel
 onready var length_value_label = $CanvasLayer/GUI/VBoxContainer/Length/ValueLabel
 onready var chains_value_label = $CanvasLayer/GUI/VBoxContainer/Chains/ValueLabel
-onready var gap = $CanvasLayer/GUI/VBoxContainer/Gap/CheckBox
-onready var show_editor_guides = $CanvasLayer/GUI/VBoxContainer/ShowEditorGuides/CheckBox
+onready var gap = $CanvasLayer/GUI/VBoxContainer/Gap/MarginContainer/CheckBox
+onready var show_editor_guides = $CanvasLayer/GUI/VBoxContainer/ShowEditorGuides/MarginContainer/CheckBox
 
 
 # Called when the node enters the scene tree for the first time.

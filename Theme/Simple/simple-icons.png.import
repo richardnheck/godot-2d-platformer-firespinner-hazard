@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UIpack_vector.svg-7a0babc3fa6f6b51c7c88c3e0cc4b62b.stex"
+path="res://.import/simple-icons.png-a9d80a142e419fb47c87c24bde3f624a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Theme/FlatUI/UIpack_vector.svg"
-dest_files=[ "res://.import/UIpack_vector.svg-7a0babc3fa6f6b51c7c88c3e0cc4b62b.stex" ]
+source_file="res://Theme/Simple/simple-icons.png"
+dest_files=[ "res://.import/simple-icons.png-a9d80a142e419fb47c87c24bde3f624a.stex" ]
 
 [params]
 
@@ -20,11 +20,11 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
