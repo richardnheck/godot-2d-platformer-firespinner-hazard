@@ -2,172 +2,316 @@
 
 [ext_resource path="res://FireSpinner/FireBallSpinner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Demo.gd" type="Script" id=2]
-[ext_resource path="res://theme.tres" type="Theme" id=3]
+[ext_resource path="res://Theme/Simple/simple.tres" type="Theme" id=3]
 
 [node name="Demo" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="FireBallSpinner" parent="." instance=ExtResource( 1 )]
-position = Vector2( 96, 128 )
+position = Vector2( 104, 128 )
+rotation_style = 0
 start_direction = -90
-length = 3
+show_editor_guides = true
 
-[node name="GUI" type="MarginContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enable = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_left = 208.0
+margin_right = 360.0
+margin_bottom = 240.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GUI" type="MarginContainer" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 179.0
-margin_right = 312.0
-margin_bottom = 98.0
+margin_left = -147.0
+margin_top = 2.0
+margin_right = -5.0
 theme = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI"]
-margin_right = 133.0
-margin_bottom = 118.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GUI"]
+margin_right = 142.0
+margin_bottom = 254.0
 
-[node name="RefreshButton" type="Button" parent="GUI/VBoxContainer"]
-margin_right = 133.0
-margin_bottom = 16.0
-text = "Reload"
+[node name="RotationStyle" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer"]
+margin_right = 142.0
+margin_bottom = 18.0
 
-[node name="RotationStyle" type="HBoxContainer" parent="GUI/VBoxContainer"]
-margin_top = 20.0
-margin_right = 133.0
-margin_bottom = 38.0
-
-[node name="NameLabel" type="Label" parent="GUI/VBoxContainer/RotationStyle"]
+[node name="NameLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/RotationStyle"]
 margin_top = 4.0
-margin_right = 55.0
+margin_right = 70.0
 margin_bottom = 14.0
+rect_min_size = Vector2( 70, 0 )
 text = "Rotation Style"
 
-[node name="OptionButton" type="OptionButton" parent="GUI/VBoxContainer/RotationStyle"]
-margin_left = 59.0
-margin_right = 107.0
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/GUI/VBoxContainer/RotationStyle"]
+margin_left = 74.0
+margin_right = 122.0
 margin_bottom = 18.0
 text = "Spin"
 items = [ "Spin", null, false, 0, null, "Swing", null, false, 1, null ]
 selected = 0
 
-[node name="StartDirection" type="HBoxContainer" parent="GUI/VBoxContainer"]
-margin_top = 42.0
-margin_right = 133.0
-margin_bottom = 58.0
+[node name="StartDirection" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer"]
+margin_top = 22.0
+margin_right = 142.0
+margin_bottom = 40.0
 
-[node name="NameLabel" type="Label" parent="GUI/VBoxContainer/StartDirection"]
-margin_top = 3.0
-margin_right = 60.0
-margin_bottom = 13.0
+[node name="NameLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/StartDirection"]
+margin_top = 4.0
+margin_right = 70.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 70, 0 )
 text = "Start Direction"
 
-[node name="HSlider" type="HSlider" parent="GUI/VBoxContainer/StartDirection"]
-margin_left = 64.0
-margin_right = 114.0
-margin_bottom = 16.0
+[node name="HSlider" type="HSlider" parent="CanvasLayer/GUI/VBoxContainer/StartDirection"]
+margin_left = 74.0
+margin_right = 124.0
+margin_bottom = 18.0
 rect_min_size = Vector2( 50, 0 )
 min_value = -180.0
 max_value = 180.0
 step = 45.0
 
-[node name="ValueLabel" type="Label" parent="GUI/VBoxContainer/StartDirection"]
-margin_left = 118.0
-margin_top = 3.0
-margin_right = 123.0
-margin_bottom = 13.0
+[node name="ValueLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/StartDirection"]
+margin_left = 128.0
+margin_top = 4.0
+margin_right = 133.0
+margin_bottom = 14.0
 text = "0"
 
-[node name="SpinSpeed" type="HBoxContainer" parent="GUI/VBoxContainer"]
-margin_top = 62.0
-margin_right = 133.0
-margin_bottom = 78.0
+[node name="SpinSpeed" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer" groups=[
+"spin",
+]]
+margin_top = 44.0
+margin_right = 142.0
+margin_bottom = 62.0
 
-[node name="NameLabel" type="Label" parent="GUI/VBoxContainer/SpinSpeed"]
-margin_top = 3.0
+[node name="NameLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/SpinSpeed"]
+margin_top = 4.0
 margin_right = 70.0
-margin_bottom = 13.0
+margin_bottom = 14.0
 rect_min_size = Vector2( 70, 0 )
 text = "Spin Speed"
 
-[node name="HSlider" type="HSlider" parent="GUI/VBoxContainer/SpinSpeed"]
+[node name="HSlider" type="HSlider" parent="CanvasLayer/GUI/VBoxContainer/SpinSpeed"]
 margin_left = 74.0
 margin_right = 124.0
-margin_bottom = 16.0
+margin_bottom = 18.0
 rect_min_size = Vector2( 50, 0 )
 min_value = -100.0
 step = 10.0
 value = 90.0
 
-[node name="ValueLabel" type="Label" parent="GUI/VBoxContainer/SpinSpeed"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/SpinSpeed"]
 margin_left = 128.0
-margin_top = 3.0
+margin_top = 4.0
 margin_right = 133.0
-margin_bottom = 13.0
+margin_bottom = 14.0
 text = "0"
 
-[node name="SwingDegrees" type="HBoxContainer" parent="GUI/VBoxContainer"]
-margin_top = 82.0
-margin_right = 133.0
-margin_bottom = 98.0
+[node name="SwingSpeed" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer" groups=[
+"swing",
+]]
+margin_top = 66.0
+margin_right = 142.0
+margin_bottom = 84.0
 
-[node name="NameLabel" type="Label" parent="GUI/VBoxContainer/SwingDegrees"]
-margin_top = 3.0
+[node name="NameLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/SwingSpeed"]
+margin_top = 4.0
 margin_right = 70.0
-margin_bottom = 13.0
-rect_min_size = Vector2( 70, 0 )
-text = "Swing Degrees"
-
-[node name="HSlider" type="HSlider" parent="GUI/VBoxContainer/SwingDegrees"]
-margin_left = 74.0
-margin_right = 124.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 50, 0 )
-min_value = 45.0
-max_value = 90.0
-step = 45.0
-value = 90.0
-
-[node name="ValueLabel" type="Label" parent="GUI/VBoxContainer/SwingDegrees"]
-margin_left = 128.0
-margin_top = 3.0
-margin_right = 133.0
-margin_bottom = 13.0
-text = "0"
-
-[node name="SwingSpeed" type="HBoxContainer" parent="GUI/VBoxContainer"]
-margin_top = 102.0
-margin_right = 133.0
-margin_bottom = 118.0
-
-[node name="NameLabel" type="Label" parent="GUI/VBoxContainer/SwingSpeed"]
-margin_top = 3.0
-margin_right = 70.0
-margin_bottom = 13.0
+margin_bottom = 14.0
 rect_min_size = Vector2( 70, 0 )
 text = "Swing Speed"
 
-[node name="HSlider" type="HSlider" parent="GUI/VBoxContainer/SwingSpeed"]
+[node name="HSlider" type="HSlider" parent="CanvasLayer/GUI/VBoxContainer/SwingSpeed"]
 margin_left = 74.0
 margin_right = 124.0
-margin_bottom = 16.0
+margin_bottom = 18.0
 rect_min_size = Vector2( 50, 0 )
 min_value = -100.0
 step = 10.0
 value = 90.0
 
-[node name="ValueLabel" type="Label" parent="GUI/VBoxContainer/SwingSpeed"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/SwingSpeed"]
 margin_left = 128.0
-margin_top = 3.0
+margin_top = 4.0
 margin_right = 133.0
-margin_bottom = 13.0
+margin_bottom = 14.0
 text = "0"
 
-[connection signal="pressed" from="GUI/VBoxContainer/RefreshButton" to="." method="_on_RefreshButton_pressed"]
-[connection signal="item_selected" from="GUI/VBoxContainer/RotationStyle/OptionButton" to="." method="_on_RotationStyleOptionButton_item_selected"]
-[connection signal="value_changed" from="GUI/VBoxContainer/StartDirection/HSlider" to="." method="_on_StartDirectionHSlider_value_changed"]
-[connection signal="value_changed" from="GUI/VBoxContainer/SpinSpeed/HSlider" to="." method="_on_SpinSpeedHSlider_value_changed"]
-[connection signal="value_changed" from="GUI/VBoxContainer/SwingDegrees/HSlider" to="." method="_on_SwingDegreesHSlider_value_changed"]
-[connection signal="value_changed" from="GUI/VBoxContainer/SwingSpeed/HSlider" to="." method="_on_SwingSpeedHSlider_value_changed"]
+[node name="SwingDegrees" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer" groups=[
+"swing",
+]]
+margin_top = 88.0
+margin_right = 142.0
+margin_bottom = 106.0
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/SwingDegrees"]
+margin_top = 4.0
+margin_right = 70.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 70, 0 )
+text = "Swing Degrees"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/GUI/VBoxContainer/SwingDegrees"]
+margin_left = 74.0
+margin_right = 124.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 50, 0 )
+min_value = 45.0
+max_value = 135.0
+step = 45.0
+value = 90.0
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/SwingDegrees"]
+margin_left = 128.0
+margin_top = 4.0
+margin_right = 133.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="ShowEditorGuides" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer"]
+margin_top = 110.0
+margin_right = 142.0
+margin_bottom = 134.0
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/ShowEditorGuides"]
+margin_top = 7.0
+margin_right = 65.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 65, 0 )
+text = "Show Guides"
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/GUI/VBoxContainer/ShowEditorGuides"]
+margin_left = 69.0
+margin_right = 93.0
+margin_bottom = 24.0
+
+[node name="SwingTimeOffset" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer" groups=[
+"swing",
+]]
+margin_top = 138.0
+margin_right = 142.0
+margin_bottom = 156.0
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/SwingTimeOffset"]
+margin_top = 4.0
+margin_right = 73.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 70, 0 )
+text = "Swing Time Offset"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/GUI/VBoxContainer/SwingTimeOffset"]
+margin_left = 77.0
+margin_right = 127.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 50, 0 )
+max_value = 10.0
+step = 0.5
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/SwingTimeOffset"]
+margin_left = 131.0
+margin_top = 4.0
+margin_right = 136.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="Length" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer"]
+margin_top = 160.0
+margin_right = 142.0
+margin_bottom = 178.0
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/Length"]
+margin_top = 4.0
+margin_right = 70.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 70, 0 )
+text = "Length"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/GUI/VBoxContainer/Length"]
+margin_left = 74.0
+margin_right = 124.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 50, 0 )
+min_value = 1.0
+max_value = 5.0
+value = 3.0
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/Length"]
+margin_left = 128.0
+margin_top = 4.0
+margin_right = 133.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="Chains" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer"]
+margin_top = 182.0
+margin_right = 142.0
+margin_bottom = 200.0
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/Chains"]
+margin_top = 4.0
+margin_right = 70.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 70, 0 )
+text = "Chains"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/GUI/VBoxContainer/Chains"]
+margin_left = 74.0
+margin_right = 124.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 50, 0 )
+min_value = 1.0
+max_value = 4.0
+value = 1.0
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/Chains"]
+margin_left = 128.0
+margin_top = 4.0
+margin_right = 133.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="Gap" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer"]
+margin_top = 204.0
+margin_right = 142.0
+margin_bottom = 228.0
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/GUI/VBoxContainer/Gap"]
+margin_top = 7.0
+margin_right = 65.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 65, 0 )
+text = "Gap"
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/GUI/VBoxContainer/Gap"]
+margin_left = 69.0
+margin_right = 93.0
+margin_bottom = 24.0
+
+[node name="ResetSpinnerButton" type="Button" parent="CanvasLayer/GUI/VBoxContainer"]
+margin_top = 232.0
+margin_right = 142.0
+margin_bottom = 248.0
+text = "Reset Spinner"
+
+[connection signal="item_selected" from="CanvasLayer/GUI/VBoxContainer/RotationStyle/OptionButton" to="." method="_on_RotationStyleOptionButton_item_selected"]
+[connection signal="value_changed" from="CanvasLayer/GUI/VBoxContainer/StartDirection/HSlider" to="." method="_on_StartDirectionHSlider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/GUI/VBoxContainer/SpinSpeed/HSlider" to="." method="_on_SpinSpeedHSlider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/GUI/VBoxContainer/SwingSpeed/HSlider" to="." method="_on_SwingSpeedHSlider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/GUI/VBoxContainer/SwingDegrees/HSlider" to="." method="_on_SwingDegreesHSlider_value_changed"]
+[connection signal="toggled" from="CanvasLayer/GUI/VBoxContainer/ShowEditorGuides/CheckBox" to="." method="_on_ShowSwingBoundaryCheckBox_toggled"]
+[connection signal="value_changed" from="CanvasLayer/GUI/VBoxContainer/SwingTimeOffset/HSlider" to="." method="_on_SwingTimeOffsetHSlider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/GUI/VBoxContainer/Length/HSlider" to="." method="_on_LengthHSlider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/GUI/VBoxContainer/Chains/HSlider" to="." method="_on_ChainsHSlider_value_changed"]
+[connection signal="toggled" from="CanvasLayer/GUI/VBoxContainer/Gap/CheckBox" to="." method="_on_GapCheckBox_toggled"]
+[connection signal="pressed" from="CanvasLayer/GUI/VBoxContainer/ResetSpinnerButton" to="." method="_on_ResetSpinnerButton_pressed"]
