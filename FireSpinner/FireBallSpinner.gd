@@ -504,22 +504,30 @@ func calculate_adjustments_caused_by_swing_ease_time_offset() -> void:
 	var number_of_degrees = abs(swing_speed) * swing_time_offset
 	
 	var degrees_left = number_of_degrees
-	var offset_degrees = 0
+	
+	var offset_degrees = 0		
 	
 	# if swing_speed > 0 (positive) then swing starts rotating clockwise
 	# however the time offset results in a delay so we need to first rotate in 
 	# the opposite direction so the offset swing is behind the normal swing 
 	var offset_sign = -1 if swing_speed > 0 else 1
 	
-	var i = 0
 	# Loop through the number of degrees to determine the starting offset of the swing cycle as well as the starting direction of rotation
 	while degrees_left > 0:  
 		var exceeded_boundary_anticlockwise = offset_sign == -1 and offset_degrees - degrees_left < -swing_degrees
 		var exceeded_boundary_clockwise = offset_sign == 1 and (offset_degrees + degrees_left > swing_degrees)
 		
 		if exceeded_boundary_anticlockwise or exceeded_boundary_clockwise:
-			# angle offset has reached swing boundary range
-			var delta = swing_degrees - offset_degrees
+			var delta = 0
+			if offset_degrees == 0:
+				# Offset has moved from the start point at the centre of the swing to the boundary
+				# So offset has moved half a full swing cycle i.e swing_degrees
+				delta = swing_degrees
+			else:
+				# Offset has moved from one boundary to the next
+				# So offset has moved a full swing cycle i.e swing_degrees * 2
+				delta = swing_degrees * 2
+			
 			offset_degrees += delta * offset_sign		# account for direction
 			degrees_left -= abs(delta)
 			offset_sign *= -1   	# change direction since boundary reached
@@ -527,13 +535,6 @@ func calculate_adjustments_caused_by_swing_ease_time_offset() -> void:
 			# angle offset is within the within swing boundary range
 			offset_degrees += degrees_left * offset_sign  # -1 because time offset delays time to reach start so need to rotate offset in opposite direction
 			degrees_left = 0
-			
-		i += 1
-		print("degrees_left", degrees_left)
-		# Safe check to prevent infinite loops
-		if i > 100:
-			break
-			print("i > 100")
 		
 	swing_time_offset_degrees = offset_degrees
 	
