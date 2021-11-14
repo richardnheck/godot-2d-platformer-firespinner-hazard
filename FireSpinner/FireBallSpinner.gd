@@ -114,7 +114,6 @@ var time_passed:float = 0.0
 var is_clockwise_start = false			# Indicates if swing direction is clockwise at the start when swing enters threshold region
 var threshold_reached = Once.new()		# A trigger when swing is inside the threshold region
 var outside_threshold = Once.new()		# A trigger when sing is outside the threshold region
-var prev_distance_to_boundary = null	# The previous distance to the boundary.  Used to determine if swing is approaching or moving away from the boundary
 var skip_rotation = false
 
 #
@@ -234,11 +233,18 @@ func _reset_spin() -> void:
 # Reset the swing so it starts with the newly configured values
 # ------------------------------------------------------------------------------
 func _reset_swing() -> void:
+	# Reset main swing variables
 	is_swing_start = true
 	actual_rotation_degrees = start_direction
 	is_swing_clockwise = swing_speed > 0   # Positive speed starts swing in clockwise direction
 	_set_ease_range()		
 	swing_ease_offset = time_passed		# Start swing ease from the beginning
+	
+	# Reset fireball rotation variables
+	is_clockwise_start = false
+	threshold_reached = Once.new()
+	outside_threshold = Once.new()
+	skip_rotation = false
 	
 	if swing_speed == 0:
 		# Speed is zero just make one call to show it in the start position
@@ -454,8 +460,6 @@ func _rotate_fireballs():
 			
 			# Call all fireballs to remember their current rotation
 			get_tree().call_group(_get_fireball_group(), "remember_current_rotation")
-			
-	prev_distance_to_boundary = distance_to_boundary
 
 
 # ------------------------------------------------------------------------------
