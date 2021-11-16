@@ -1,9 +1,15 @@
 # Godot "Fire Spinner" hazard for 2D platformer
 This repository contains a Fire Spinner Hazard for a 2D platformer based on the "Burny Whirler" hazard from LevelHead.  
 
+## Demo ##
 The demo application exposes a gui editor to experiment with the Fire Spinner configuration.
-[Short demo video](media/firespinner-demo.mkv?raw=true)
 
+[Demo on itch.io](https://parabolink.itch.io/fire-spinner-hazard-for-2d-platformer)
+
+[![Demo](https://j.gifs.com/pZ9P2X.gif)](https://youtu.be/dAyWBLza_sI)
+
+
+## Introduction ##
 The Fire Spinner has two rotation styles with plenty of variables to configure:
 1. **Spin** 
 2. **Swing** 
