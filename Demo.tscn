@@ -10,6 +10,7 @@ script = ExtResource( 2 )
 
 [node name="FireBallSpinner" parent="." instance=ExtResource( 1 )]
 position = Vector2( 104, 128 )
+rotation_style = 0
 start_direction = -90
 show_editor_guides = true
 
@@ -86,9 +87,7 @@ margin_right = 133.0
 margin_bottom = 12.0
 text = "0"
 
-[node name="SpinSpeed" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer" groups=[
-"spin",
-]]
+[node name="SpinSpeed" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer" groups=["spin"]]
 margin_top = 36.0
 margin_right = 142.0
 margin_bottom = 48.0
@@ -114,9 +113,7 @@ margin_right = 133.0
 margin_bottom = 12.0
 text = "0"
 
-[node name="SwingSpeed" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer" groups=[
-"swing",
-]]
+[node name="SwingSpeed" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer" groups=["swing"]]
 margin_top = 52.0
 margin_right = 142.0
 margin_bottom = 64.0
@@ -142,9 +139,7 @@ margin_right = 133.0
 margin_bottom = 12.0
 text = "0"
 
-[node name="SwingDegrees" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer" groups=[
-"swing",
-]]
+[node name="SwingDegrees" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer" groups=["swing"]]
 margin_top = 68.0
 margin_right = 142.0
 margin_bottom = 80.0
@@ -171,9 +166,7 @@ margin_right = 133.0
 margin_bottom = 12.0
 text = "0"
 
-[node name="SwingTimeOffset" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer" groups=[
-"swing",
-]]
+[node name="SwingTimeOffset" type="HBoxContainer" parent="CanvasLayer/GUI/VBoxContainer" groups=["swing"]]
 margin_top = 84.0
 margin_right = 142.0
 margin_bottom = 96.0
