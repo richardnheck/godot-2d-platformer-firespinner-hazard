@@ -60,7 +60,7 @@ The Fire Spinner is configurable within the Godot Editor.  There is one addition
 ## Notes ##
 I have been inspired by LevelHead's Burny Whirler, but the code and settings do not attempt to copy the exact speed and timing of the Burny Whirler.  
 
-One major difference is the sign of the speed and the start direction.  In my implementation, positive angles are clockwise and positive speeds results in clockwise rotation, whereas the Burny Whirler settings are opposite.  The reason I did this was to make it consistent with rotation in Godot. i.e positive rotation is positive. 
+One major difference is the sign of the speed and the start direction.  In my implementation, positive angles are clockwise and positive speeds results in clockwise rotation, whereas the Burny Whirler settings are opposite.  The reason I did this was to make it consistent with rotation in Godot. i.e positive rotation is clockwise. 
 
 The Fire Spinner was created for my 2D pixel platformer ["Castle Yokai"](https://parabolink.itch.io/castle-yokai) so the fireball size and spacing has been set for the specific resolution of my game.  To adjust the size of the fireball spacing for your own game, modify the variable below which affects the placement of the fireballs on a chain.  It is effectively the radius of a circle in pixels that could encompass a fireball.  I chose this specific value to allow my player to pass through the gaps between the fireballs when the Gap setting is true.  
 ```
